@@ -20,6 +20,8 @@ def check_web(url):
         if(driver.find_elements_by_class_name("title").__getitem__(0).text == "访问异常"):
             print(driver.find_elements_by_class_name("title").__getitem__(0).text)
             time.sleep(10)
+        else:
+            time.sleep(3)
     except:
         time.sleep(3)
 
