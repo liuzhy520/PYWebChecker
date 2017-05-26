@@ -4,8 +4,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import time
 
-isDone = 0
+# check domestic flights
 
+isDone = 0
 def check_web(url):
     driver = webdriver.Chrome()
     driver.get(url)
