@@ -1,6 +1,6 @@
 from webspider.src.spider import wsdomestic
 
-url = "https://www.tianxun.com/oneway-ccan-chgh.html?depdate=2017-05-26&cabin=Economy"
+url = "https://www.tianxun.com/oneway-ccan-csha.html?depdate=2017-05-27&cabin=Economy"
 
 def main():
     wsdomestic.check_web(url)
