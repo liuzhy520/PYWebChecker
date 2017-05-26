@@ -1,9 +1,9 @@
-from webspider.src.spider import webselector
+from webspider.src.spider import wsdomestic
 
 url = "https://www.tianxun.com/oneway-ccan-chgh.html?depdate=2017-05-26&cabin=Economy"
 
 def main():
-    webselector.check_web(url)
+    wsdomestic.check_web(url)
 
 
 main()

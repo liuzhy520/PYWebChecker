@@ -1,4 +1,4 @@
-from webspider.src.spider.webselector import check_web
+from webspider.src.spider.wsdomestic import check_web
 
 check_web()
 
