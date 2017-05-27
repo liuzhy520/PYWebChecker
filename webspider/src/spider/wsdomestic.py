@@ -33,36 +33,28 @@ def check_web(url):
     for con in listcon:
         try:
             price = con.find_element_by_class_name("pricefield").text
-        except:
-            price = ""
-        try:
-            name = con.find_element_by_class_name("airline").text
-        except:
-            name = ""
-        try:
-            dt = con.find_element_by_class_name("box2").find_element_by_class_name("fs14").text
-        except:
-            dt = ""
-        try:
-            da = con.find_element_by_class_name("box2").find_element_by_css_selector("span").text
-        except:
-            da = ""
-        try:
-            at = con.find_element_by_class_name("box4").find_element_by_class_name("fs14").text
-        except:
-            at = ""
-        try:
-            aa = con.find_element_by_class_name("box4").find_element_by_css_selector("span").text
-        except:
-            aa = ""
-        try:
-            tax = con.find_element_by_class_name("tax").text
-        except:
-            tax = ""
 
-        try:
+            name = con.find_element_by_class_name("airline").text
+
+            dt = con.find_element_by_class_name("box2").find_element_by_class_name("fs14").text
+
+            da = con.find_element_by_class_name("box2").find_element_by_css_selector("span").text
+
+            at = con.find_element_by_class_name("box4").find_element_by_class_name("fs14").text
+
+            aa = con.find_element_by_class_name("box4").find_element_by_css_selector("span").text
+
+            tax = con.find_element_by_class_name("tax").text
+
             code = con.find_element_by_class_name("aircraft").text
         except:
+            price = ""
+            name = ""
+            dt = ""
+            da = ""
+            at = ""
+            aa = ""
+            tax = ""
             code = ""
         log(name, code, dt, da, at, aa, tax, price)
 
