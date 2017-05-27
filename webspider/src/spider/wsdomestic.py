@@ -20,8 +20,6 @@ def check_web(url):
         if(driver.find_elements_by_class_name("title").__getitem__(0).text == "访问异常"):
             print(driver.find_elements_by_class_name("title").__getitem__(0).text)
             time.sleep(10)
-        else:
-            time.sleep(3)
     except:
         time.sleep(3)
 
@@ -33,28 +31,36 @@ def check_web(url):
     for con in listcon:
         try:
             price = con.find_element_by_class_name("pricefield").text
-
-            name = con.find_element_by_class_name("airline").text
-
-            dt = con.find_element_by_class_name("box2").find_element_by_class_name("fs14").text
-
-            da = con.find_element_by_class_name("box2").find_element_by_css_selector("span").text
-
-            at = con.find_element_by_class_name("box4").find_element_by_class_name("fs14").text
-
-            aa = con.find_element_by_class_name("box4").find_element_by_css_selector("span").text
-
-            tax = con.find_element_by_class_name("tax").text
-
-            code = con.find_element_by_class_name("aircraft").text
         except:
             price = ""
+        try:
+            name = con.find_element_by_class_name("airline").text
+        except:
             name = ""
+        try:
+            dt = con.find_element_by_class_name("box2").find_element_by_class_name("fs14").text
+        except:
             dt = ""
+        try:
+            da = con.find_element_by_class_name("box2").find_element_by_css_selector("span").text
+        except:
             da = ""
+        try:
+            at = con.find_element_by_class_name("box4").find_element_by_class_name("fs14").text
+        except:
             at = ""
+        try:
+            aa = con.find_element_by_class_name("box4").find_element_by_css_selector("span").text
+        except:
             aa = ""
+        try:
+            tax = con.find_element_by_class_name("tax").text
+        except:
             tax = ""
+
+        try:
+            code = con.find_element_by_class_name("aircraft").text
+        except:
             code = ""
         log(name, code, dt, da, at, aa, tax, price)
 
@@ -62,13 +68,13 @@ def check_web(url):
     #     print(i.text)
 
     time.sleep(200)
-    # try:
-    #     WebDriverWait(driver, delay)
-    #     # price = driver.find_element_by_class_name("pricefield")
-    #     # print(price)
-    #
-    # except TimeoutException:
-    #     print("Loading took too much time!")
+    try:
+        WebDriverWait(driver, delay)
+        # price = driver.find_element_by_class_name("pricefield")
+        # print(price)
+
+    except TimeoutException:
+        print("Loading took too much time!")
 
     # price = driver.find_element_by_class_name("pricefield")
     #
