@@ -1,4 +1,4 @@
-from webspider.src.logger.logger import log, logReturn
+from webspider.src.logger import log
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -11,15 +11,15 @@ def check_web(departure, arrival):
     driver = webdriver.Chrome()
     driver.get(url)
 
-    print(">>>start running")
+    log.v("start running")
     try:
         element = WebDriverWait(driver, 90).until(
             EC.presence_of_element_located((By.CLASS_NAME, "big-airline"))
         )
-        print(">>>end driver waiting")
+        log.v("end driver waiting")
         time.sleep(10)
 
-        print(">>>end waiting")
+        log.v("end waiting")
 
         getInfo(driver)
     # except Exception as e:
@@ -29,22 +29,22 @@ def check_web(departure, arrival):
         time.sleep(5)
         driver.quit()
 
-    print("end")
+        log.v("end")
 
 def getInfo(driver):
     articles = driver.find_elements_by_css_selector("article")
-    print(">>>start")
+    log.v("start")
     for article in articles:
-        print(">>>get articles")
+        log.v("get articles")
         # try:
         time.sleep(5)
 
         article.click()
-        print(">>>click open")
+        log.v("click open")
         time.sleep(5)
 
         popup_panel = driver.find_element_by_id("details-mobile-panel")
-        print(">>>found details-mobile-panel")
+        log.v("found details-mobile-panel")
         # flight_content = popup_session.find_elements_by_class_name("fss-bp-itinerary")
         # print(">>>found fss-bp-itinerary")
         # count = 0
@@ -63,23 +63,23 @@ def getInfo(driver):
         for leg in legs:
             time.sleep(5)
             leg.click()
-            print(">>>click leg")
+            log.v("click leg")
             airlines = leg.find_elements_by_class_name("operated-by")
             for airline in airlines:
-                print(">>>airline:" + airline.text)
+                log.i("airline:", airline.text)
 
         prices = popup_panel.find_elements_by_class_name("price")
         for price in prices:
-            print(">>>price:" + price.text)
+            log.i("price:" , price.text)
         # a = popup_session.find_element_by_class_name("fss-panel-content")
 
 
-        print(">>>click departure")
+            log.v(">>>click departure")
 
         time.sleep(5)
 
         driver.find_element_by_id("fss-overlay").click()
-        print(">>>click close")
+        log.v(">>>click close")
             # driver.find_element_by_css_selector("button").find_element_by_class_name("").click()
         # except:
         #     print(">>>exception!")

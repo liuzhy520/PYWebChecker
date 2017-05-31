@@ -1,4 +1,4 @@
-from webspider.src.logger.logger import log
+from webspider.src.logger.log import log
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC

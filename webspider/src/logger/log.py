@@ -38,3 +38,19 @@ def logReturn(departF, departureT, dAirport, arrivalT, aAirport,
     print("--- price ---")
     print("price:" + price)
     print("=======================================================")
+
+def logSep():
+    print("=======================================================")
+
+def i(key, value):
+    print('\033[0m' + ">>> " + key + " : " + value)
+
+def e(msg):
+    print('\033[31m' + "e: " + msg)
+
+def w(msg):
+    print('\033[33m' + "w: " + msg)
+
+def v(msg):
+    print('\033[90m' + "v: " + msg)
+
