@@ -66,11 +66,11 @@ def getInfo(driver):
             log.v("click leg")
             airlines = leg.find_elements_by_class_name("operated-by")
             for airline in airlines:
-                log.i("airline:", airline.text)
+                log.i("airline", airline.text)
 
         prices = popup_panel.find_elements_by_class_name("price")
         for price in prices:
-            log.i("price:" , price.text)
+            log.i("price" , price.text)
         # a = popup_session.find_element_by_class_name("fss-panel-content")
 
 
