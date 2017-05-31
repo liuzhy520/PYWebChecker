@@ -74,12 +74,12 @@ def getInfo(driver):
         # a = popup_session.find_element_by_class_name("fss-panel-content")
 
 
-            log.v(">>>click departure")
+            log.v("click departure")
 
         time.sleep(5)
 
         driver.find_element_by_id("fss-overlay").click()
-        log.v(">>>click close")
+        log.v("click close")
             # driver.find_element_by_css_selector("button").find_element_by_class_name("").click()
         # except:
         #     print(">>>exception!")
