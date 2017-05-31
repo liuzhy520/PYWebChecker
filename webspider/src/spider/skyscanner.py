@@ -40,7 +40,8 @@ def getInfo(driver):
             print(">>>found fss-popup")
             flight_content = popup_session.find_element_by_class_name("fss-bp-itinerary")
             print(">>>found fss-bp-itinerary")
-            a = flight_content.find_elements_by_class_name("leg-summary")
+            a = popup_session.find_element_by_class_name("operated-by")
+            print(">>>found operated-by")
             print(">>>click departure")
 
             time.sleep(5)
