@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import time
 
-url = "https://www.skyscanner.com.hk/transport/flights/can/tyoa/170601/170630/airfares-from-guangzhou-to-tokyo-in-june-2017.html?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results"
+url = "https://www.skyscanner.com.hk/transport/flights/can/tyoa/170610/170630/airfares-from-guangzhou-to-tokyo-in-june-2017.html?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results"
 def check_web(departure, arrival):
     driver = webdriver.Chrome()
     driver.get(url)
