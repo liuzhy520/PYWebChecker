@@ -3,6 +3,8 @@ from webspider.src.spider import skyscanner
 from webspider.src.logger import log
 from webspider.src.spider.skyscanner_hk import return_flight
 
+# params will be set in here
+
 url = "https://www.tianxun.com/oneway-ccan-csha.html?depdate=2017-05-27&cabin=Economy"
 
 def main():

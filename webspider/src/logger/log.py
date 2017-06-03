@@ -40,7 +40,7 @@ def logReturn(departF, departureT, dAirport, arrivalT, aAirport,
     print("price:" + price)
     print("=======================================================")
 
-def logSep():
+def printLine():
     print("=======================================================")
 
 def i(key, value):
