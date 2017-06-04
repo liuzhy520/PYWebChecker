@@ -8,12 +8,12 @@ import time
 
 url = "https://www.skyscanner.com.hk/transport/flights/hkg/tpet/170801/170806/airfares-from-hong-kong-international-to-taipei-in-august-2017.html?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=day-view#results"
 def check_web(departure, arrival):
-    driver = webdriver.Chrome()
-    # driver.delete_all_cookies()
-    driver.get(url)
 
     log.v("start running")
     try:
+        driver = webdriver.Chrome()
+        # driver.delete_all_cookies()
+        driver.get(url)
         # element = WebDriverWait(driver, 90).until(
         #     EC.presence_of_element_located((By.CLASS_NAME, "day-list-item"))
         # )
@@ -36,7 +36,7 @@ def check_web(departure, arrival):
         log.v("end")
 
 def getInfo(driver):
-    articles = driver.find_elements_by_class("day-list-item")
+    articles = driver.find_elements_by_class_name("day-list-item")
     log.v("start")
     for article in articles:
         log.v("get articles")
