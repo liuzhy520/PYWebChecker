@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import time
 
-url = "https://www.skyscanner.com.hk/transport/flights/can/tyoa/170610/170630/airfares-from-guangzhou-to-tokyo-in-june-2017.html?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results"
+# url = "https://www.skyscanner.com.hk/transport/flights/can/tyoa/170610/170630/airfares-from-guangzhou-to-tokyo-in-june-2017.html?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results"
 url = "https://www.skyscanner.com.hk/transport/flights/hkg/tpet/170801/170806/airfares-from-hong-kong-international-to-taipei-in-august-2017.html?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=day-view#results"
 def check_web(departure, arrival):
     driver = webdriver.Chrome()
@@ -15,7 +15,7 @@ def check_web(departure, arrival):
     log.v("start running")
     try:
         element = WebDriverWait(driver, 90).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "big-airline"))
+            EC.presence_of_element_located((By.CSS_SELECTOR, "article"))
         )
         log.v("end driver waiting")
         time.sleep(15)
