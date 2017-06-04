@@ -41,7 +41,7 @@ def logReturn(departF, departureT, dAirport, arrivalT, aAirport,
     print("=======================================================")
 
 def printLine():
-    print("=======================================================")
+    print('\033[0m' +  "=======================================================")
 
 def i(key, value):
     print('\033[0m' + datetime.datetime.now().ctime() + ">>> " + key + " : " + value)

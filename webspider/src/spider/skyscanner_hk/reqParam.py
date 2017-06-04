@@ -13,3 +13,13 @@ url = "https://www.skyscanner.com.hk/transport/flights/can/tyoa/170610/170630/ai
 # 170606/170708/
 # airfares-from-guangzhou-to-melbourne-in-june-2017-and-july-2017.html?
 # adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results
+
+departCityCode = ""
+departCity = ""
+
+arriveCityCode = ""
+arriveCity = ""
+
+
+def createReturnUrl():
+    return "url"
