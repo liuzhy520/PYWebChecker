@@ -14,11 +14,11 @@ def check_web(departure, arrival):
 
     log.v("start running")
     try:
-        element = WebDriverWait(driver, 90).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "day-list-item"))
-        )
+        # element = WebDriverWait(driver, 90).until(
+        #     EC.presence_of_element_located((By.CLASS_NAME, "day-list-item"))
+        # )
         log.v("end driver waiting")
-        time.sleep(10)
+        time.sleep(30)
         # element = WebDriverWait(driver, 90).until(
         #     EC.presence_of_element_located((By.CLASS_NAME, "day-list-item"))
         # )
