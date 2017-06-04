@@ -7,6 +7,7 @@ from selenium.common.exceptions import TimeoutException
 import time
 
 url = "https://www.skyscanner.com.hk/transport/flights/can/tyoa/170610/170630/airfares-from-guangzhou-to-tokyo-in-june-2017.html?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results"
+url = "https://www.skyscanner.com.hk/transport/flights/hkg/tpet/170801/170806/airfares-from-hong-kong-international-to-taipei-in-august-2017.html?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=day-view#results"
 def check_web(departure, arrival):
     driver = webdriver.Chrome()
     driver.get(url)
@@ -17,7 +18,7 @@ def check_web(departure, arrival):
             EC.presence_of_element_located((By.CLASS_NAME, "big-airline"))
         )
         log.v("end driver waiting")
-        time.sleep(10)
+        time.sleep(15)
 
         log.v("end waiting")
 
@@ -67,6 +68,13 @@ def getInfo(driver):
             airlines = leg.find_elements_by_class_name("operated-by")
             for airline in airlines:
                 log.i("airline", airline.text)
+                depart = leg.find_element_by_class_name("departure")
+                log.i("depart time",depart.find_element_by_class_name("times").text)
+                log.i("depart airport",depart.find_element_by_class_name("route").text)
+                destination = leg.find_element_by_class_name("destination")
+
+                log.i("arrive time",destination.find_element_by_class_name("times").text)
+                log.i("arrive airport",destination.find_element_by_class_name("route").text)
 
         prices = popup_panel.find_elements_by_class_name("price")
         for price in prices:
@@ -74,7 +82,7 @@ def getInfo(driver):
         # a = popup_session.find_element_by_class_name("fss-panel-content")
 
 
-            log.v("click departure")
+            log.v("click legs")
 
         time.sleep(5)
 
