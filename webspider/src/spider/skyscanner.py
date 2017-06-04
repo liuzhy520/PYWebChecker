@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from webspider.src.proxy import ip_list
 import time
 
 url = "https://www.skyscanner.com.hk/transport/flights/hkg/tpet/170801/170806/airfares-from-hong-kong-international-to-taipei-in-august-2017.html?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=day-view#results"
@@ -11,7 +12,10 @@ def check_web(departure, arrival):
 
     log.v("start running")
     try:
-        driver = webdriver.Chrome()
+        PROXY = ip_list.ips[0]
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--proxy-server={0}'.format(PROXY))
+        driver = webdriver.Chrome(chrome_options=chrome_options)
         # driver.delete_all_cookies()
         driver.get(url)
         # element = WebDriverWait(driver, 90).until(
