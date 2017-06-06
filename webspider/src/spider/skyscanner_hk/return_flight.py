@@ -50,27 +50,30 @@ def runTask():
     #     time.sleep(10)
     #     driver.quit()
     # #
-    #     PROXY = "113.255.49.49:8380"
-    #     chrome_options = webdriver.ChromeOptions()
-    #     chrome_options.add_argument('--proxy-server={0}'.format(PROXY))
-    #     driver = webdriver.Chrome(chrome_options=chrome_options)
 
-        driver = webdriver.Chrome()
+
+    PROXY = "127.0.0.1:1080"
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--proxy-server={0}'.format(PROXY))
+
+    driver = webdriver.Chrome(chrome_options=chrome_options)
+
+    # driver = webdriver.Chrome()
 
 
         # driver.delete_all_cookies()
 
-        driver.get(param.createReturnUrl())
+    driver.get(param.createReturnUrl())
 
         # element = WebDriverWait(driver, 90).until(
         #     EC.presence_of_element_located((By.CSS_SELECTOR, "article")))
-        time.sleep(20)
+    time.sleep(20)
         # driver.implicitly_wait(30)
 
 
-        getInfo(driver)
+    getInfo(driver)
 
-        time.sleep(200)
+    time.sleep(200)
 
     # entity.print()
 
