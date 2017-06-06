@@ -12,4 +12,4 @@ log.e("test Error")
 log.v("test Verbose")
 log.i("test Info", "info")
 
-skyscanner.check_web("", "")
+# skyscanner.check_web("", "")
