@@ -52,17 +52,19 @@ def runTask():
     # #
 
 
-    PROXY = "127.0.0.1:1080"
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--proxy-server={0}'.format(PROXY))
-
-    driver = webdriver.Chrome(chrome_options=chrome_options)
+    # PROXY = "127.0.0.1:1080"
+    # chrome_options = webdriver.ChromeOptions()
+    # chrome_options.add_argument('--proxy-server={0}'.format(PROXY))
+    #
+    # driver = webdriver.Chrome(chrome_options=chrome_options)
 
     # driver = webdriver.Chrome()
 
 
         # driver.delete_all_cookies()
-
+    profile = webdriver.FirefoxProfile()
+    profile.native_events_enabled = True
+    driver = webdriver.Firefox(profile)
     driver.get(param.createReturnUrl())
 
         # element = WebDriverWait(driver, 90).until(
@@ -70,6 +72,7 @@ def runTask():
     time.sleep(20)
         # driver.implicitly_wait(30)
 
+    log.v("end driver wait")
 
     getInfo(driver)
 
@@ -80,7 +83,7 @@ def runTask():
 def getInfo(driver):
     articles = driver.find_elements_by_css_selector("article")
     log.v("found articles")
-    log.v("end driver wait")
+
     time.sleep(5)
     log.v("end wait")
     # articles = driver.find_elements_by_class_name("day-list-item")
