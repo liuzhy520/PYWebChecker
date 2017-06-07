@@ -65,6 +65,7 @@ def runTask():
     profile = webdriver.FirefoxProfile()
     profile.native_events_enabled = True
     driver = webdriver.Firefox(profile)
+
     driver.get(param.createReturnUrl())
 
         # element = WebDriverWait(driver, 90).until(
@@ -99,6 +100,7 @@ def getInfo(driver):
 
             bigairline = section.find_element_by_class_name("big-airline")
             log.v("found big-airline")
+            time.sleep(2)
             try:
                 airline = bigairline.find_element_by_class_name("text-sm")
                 log.v(airline.text)
