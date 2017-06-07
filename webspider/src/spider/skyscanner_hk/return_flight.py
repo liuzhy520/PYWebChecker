@@ -7,6 +7,7 @@ from selenium.common.exceptions import TimeoutException
 from webspider.src.spider.entity import return_entity
 from webspider.src.spider.skyscanner_hk import reqParam
 import time
+from bs4 import BeautifulSoup
 
 # returning flight
 
@@ -70,7 +71,7 @@ def runTask():
 
         # element = WebDriverWait(driver, 90).until(
         #     EC.presence_of_element_located((By.CSS_SELECTOR, "article")))
-    time.sleep(35)
+    time.sleep(50)
         # driver.implicitly_wait(30)
 
     log.v("end driver wait")
@@ -135,12 +136,12 @@ def getInfo(driver):
             try:
                 time.sleep(1)
                 stations = section.find_elements_by_class_name("station-tooltip")
-
+                log.v("found station-tooltip")
                 for i in range(2):
                     times = stations.__getitem__(i).find_element_by_class_name("times")
                     airport = stations.__getitem__(i).find_element_by_class_name("stop-station")
-                    log.v("time:" + times)
-                    log.v("airport:" + airport)
+                    log.v("time:" + times.text)
+                    log.v("airport:" + airport.text)
                     if count == 0:
                         if i == 0 :
                             entity.departtime = times.text
@@ -158,12 +159,14 @@ def getInfo(driver):
 
             except:
                 continue
+            finally:
+                count = count + 1
+                log.v("section end")
 
-            count = count + 1
-            log.v("section end")
 
         price = article.find_element_by_class_name("mainquote-price")
-        log.v("price"+price.text)
+        log.v("price:"+price.text)
+
         entity.cheapestprice1 = price.text
 
         entity.print()
