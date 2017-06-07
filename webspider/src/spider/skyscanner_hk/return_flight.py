@@ -164,6 +164,7 @@ def getInfo(driver):
 
         price = article.find_element_by_class_name("mainquote-price")
         log.v("price"+price.text)
+        entity.cheapestprice1 = price.text
 
         entity.print()
         log.v("article end")
