@@ -70,7 +70,7 @@ def runTask():
 
         # element = WebDriverWait(driver, 90).until(
         #     EC.presence_of_element_located((By.CSS_SELECTOR, "article")))
-    time.sleep(30)
+    time.sleep(35)
         # driver.implicitly_wait(30)
 
     log.v("end driver wait")
@@ -131,9 +131,39 @@ def getInfo(driver):
                     continue
             finally:
                 log.v("count:" + str(count))
-                count = count + 1
 
+            try:
+                time.sleep(1)
+                stations = section.find_elements_by_class_name("station-tooltip")
 
+                for i in range(2):
+                    times = stations.__getitem__(i).find_element_by_class_name("times")
+                    airport = stations.__getitem__(i).find_element_by_class_name("stop-station")
+                    log.v("time:" + times)
+                    log.v("airport:" + airport)
+                    if count == 0:
+                        if i == 0 :
+                            entity.departtime = times.text
+                            entity.departairport = airport.text
+                        else:
+                            entity.arrivetime = times.text
+                            entity.arriveairport = airport.text
+                    else:
+                        if i == 0 :
+                            entity.returndeparttime = times.text
+                            entity.returndepartairport = airport.text
+                        else:
+                            entity.returnarrivetime = times.text
+                            entity.returnarriveairport = airport.text
+
+            except:
+                continue
+
+            count = count + 1
+            log.v("section end")
+
+        price = article.find_element_by_class_name("mainquote-price")
+        log.v("price"+price.text)
 
         entity.print()
         log.v("article end")
