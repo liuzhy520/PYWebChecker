@@ -70,7 +70,7 @@ def runTask():
 
         # element = WebDriverWait(driver, 90).until(
         #     EC.presence_of_element_located((By.CSS_SELECTOR, "article")))
-    time.sleep(20)
+    time.sleep(30)
         # driver.implicitly_wait(30)
 
     log.v("end driver wait")
@@ -98,17 +98,29 @@ def getInfo(driver):
         for section in sections:
             time.sleep(3)
 
-            bigairline = section.find_element_by_class_name("big-airline")
-            log.v("found big-airline")
-            time.sleep(2)
             try:
-                airline = bigairline.find_element_by_class_name("text-sm")
-                log.v(airline.text)
-                log.v("found text-sm")
+                bigairlines = section.find_elements_by_class_name("big-airline")
+                log.v("found big-airline")
             except:
-                airline = bigairline.find_elements_by_css_selector("img")
-                log.v(airline.text)
-                log.v("found img")
+                continue
+
+            time.sleep(2)
+
+            for bigairline in bigairlines:
+
+                time.sleep(1)
+
+                try:
+                    airline = bigairline.find_element_by_class_name("text-sm")
+                    log.v(airline.text)
+                    log.v("found text-sm")
+                except:
+                    try:
+                        airline = bigairline.find_element_by_class_name("big")
+                        log.v(airline.get_attribute('innerHTML'))
+                        log.v("found img")
+                    except:
+                        continue
 
 
 
