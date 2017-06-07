@@ -17,5 +17,9 @@ def main():
     return_flight.setParamData(data)
     return_flight.runTask()
 
-main()
+
+def runSkyScannerHK():
+    log.v("start to run")
+    return_flight.setParamData(data)
+    return_flight.runTask()
 
