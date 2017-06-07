@@ -89,41 +89,53 @@ def getInfo(driver):
     log.v("end wait")
     # articles = driver.find_elements_by_class_name("day-list-item")
     log.v("start")
+    log.v("get articles")
     for article in articles:
-        log.v("get articles")
-        time.sleep(3)
+        entity = return_entity
+
+        log.v("article start")
+        time.sleep(5)
         sections = article.find_elements_by_css_selector("section")
         log.v("found sections")
 
+        count = 0
         for section in sections:
             time.sleep(3)
 
             try:
-                bigairlines = section.find_elements_by_class_name("big-airline")
+                bigairline = section.find_element_by_class_name("big-airline")
                 log.v("found big-airline")
             except:
                 continue
 
             time.sleep(2)
 
-            for bigairline in bigairlines:
-
-                time.sleep(1)
-
+            try:
+                airline = bigairline.find_element_by_class_name("text-sm")
+                log.v(airline.text)
+                if count == 0:
+                    entity.departairline = airline.text
+                else:
+                    entity.returnairline = airline.text
+                log.v("found text-sm")
+            except:
                 try:
-                    airline = bigairline.find_element_by_class_name("text-sm")
-                    log.v(airline.text)
-                    log.v("found text-sm")
+                    airline = bigairline.find_element_by_class_name("big")
+                    log.v(airline.get_attribute("alt"))
+                    if count == 0:
+                        entity.departairline = airline.get_attribute("alt")
+                    else:
+                        entity.returnairline = airline.get_attribute("alt")
+                    log.v("found img")
                 except:
-                    try:
-                        airline = bigairline.find_element_by_class_name("big")
-                        log.v(airline.get_attribute('innerHTML'))
-                        log.v("found img")
-                    except:
-                        continue
+                    continue
+            finally:
+                log.v("count:" + str(count))
+                count = count + 1
 
 
 
-
+        entity.print()
+        log.v("article end")
 
 

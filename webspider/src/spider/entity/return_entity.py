@@ -19,7 +19,7 @@ departtime = ""
 departairport = ""
 arrivetime = ""
 arriveairport = ""
-returndepartairline = ""
+returnairline = ""
 returndepartflightno = ""
 returndeparttime = ""
 returndepartairport = ""
@@ -41,7 +41,7 @@ def print():
     log.i("arrive airport", arriveairport)
     log.i("arrive time", arrivetime)
 
-    log.i("return depart airline", returndepartairline)
+    log.i("return airline", returnairline)
     log.i("return depart flight no", returndepartflightno)
 
     log.i("return depart time", returndeparttime)
