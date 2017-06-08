@@ -102,13 +102,13 @@ def getInfo(driver):
         entity = return_entity
 
         log.v("article start")
-        time.sleep(5)
+        time.sleep(2)
         sections = article.find_elements_by_css_selector("section")
         log.v("found sections")
 
         count = 0
         for section in sections:
-            time.sleep(3)
+            # time.sleep(3)
 
             try:
                 bigairline = section.find_element_by_class_name("big-airline")
@@ -116,7 +116,7 @@ def getInfo(driver):
             except:
                 continue
 
-            time.sleep(2)
+            # time.sleep(1)
 
             try:
                 airline = bigairline.find_element_by_class_name("text-sm")
@@ -141,7 +141,7 @@ def getInfo(driver):
                 log.v("count:" + str(count))
 
             try:
-                time.sleep(1)
+                # time.sleep(1)
                 stations = section.find_elements_by_class_name("station-tooltip")
                 log.v("found station-tooltip")
                 for i in range(2):
