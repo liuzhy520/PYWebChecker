@@ -8,7 +8,6 @@ from webspider.src.spider.entity import return_entity
 from webspider.src.spider.skyscanner_hk import reqParam
 import time
 from webspider.src.csvutil import csvUtil
-from bs4 import BeautifulSoup
 import datetime
 
 # returning flight
@@ -29,7 +28,7 @@ def setParamData(data):
 
 
 def runTask():
-    filename = param.departCityCode + "-" + param.arriveCityCode + "-" + param.departDate + "-" + param.returnDate + "-" + datetime.datetime.now().ctime()
+    filename = param.departCityCode + "-" + param.arriveCityCode + "-" + param.departDate + "-" + param.returnDate + "-"
     csvUtil.filename = filename
     csvUtil.createReturnFile(filename)
     # try:
