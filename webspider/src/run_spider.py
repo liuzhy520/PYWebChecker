@@ -31,3 +31,10 @@ def setReturnParams(departure, destination, departDate, returnDate):
     data.arriveCityCode = destination
     data.departDate = departDate
     data.returnDate = returnDate
+    log.printLine()
+    log.i("departure", departure)
+    log.i("destination", destination)
+    log.i("departDate", departDate)
+    log.i("returnDate", returnDate)
+    log.printLine()
+    log.v("set params done")
