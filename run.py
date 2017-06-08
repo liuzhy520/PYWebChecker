@@ -18,9 +18,9 @@ log.i("test Info", "info")
 # skyscanner.check_web("", "")
 
 departure = "fae"       # departure airport code
-destination = "mela"    # destination airport code
+destination = "can"     # destination airport code
 
-departDate = "170609"   # depart date (format: YYMMDD)
+departDate = "170610"   # depart date (format: YYMMDD)
 returnDate = "170701"   # arrive date (format: YYMMDD)
 
 run_spider.setReturnParams(departure, destination, departDate, returnDate)

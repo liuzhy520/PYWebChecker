@@ -7,14 +7,16 @@ from selenium.common.exceptions import TimeoutException
 from webspider.src.spider.entity import return_entity
 from webspider.src.spider.skyscanner_hk import reqParam
 import time
+from webspider.src.csvutil import csvUtil
 from bs4 import BeautifulSoup
+import datetime
 
 # returning flight
 
 mUrl = ""
 param = reqParam
 entity = return_entity
-
+csvU = csvUtil
 
 def setParamData(data):
     param = data
@@ -23,8 +25,13 @@ def setParamData(data):
 
 
 
-def runTask():
 
+
+
+def runTask():
+    filename = param.departCityCode + "-" + param.arriveCityCode + "-" + param.departDate + "-" + param.returnDate + "-" + datetime.datetime.now().ctime()
+    csvUtil.filename = filename
+    csvUtil.createReturnFile(filename)
     # try:
     #
     #     PROXY = "127.0.0.1:1080"
@@ -170,6 +177,7 @@ def getInfo(driver):
         entity.cheapestprice1 = price.text
 
         entity.print()
+        csvUtil.writeReturnEntity(entity)
         log.v("article end")
 
 
