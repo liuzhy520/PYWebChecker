@@ -26,8 +26,10 @@ fromToAirfares = "" # airfares-from-guangzhou-to-melbourne-in-june-2017-and-july
 departDate = ""     # 170606
 returnDate = ""     # 170708
 
+restParam = "airfares.html?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results"
 
-url = ""
+Surl = "https://www.skyscanner.com.hk/transport/flights/"
 
 def createReturnUrl():
+    url = Surl + departCityCode + "/" + arriveCityCode + "/" + departDate + "/" + returnDate + "/" + restParam
     return url
