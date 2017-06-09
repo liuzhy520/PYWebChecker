@@ -188,4 +188,5 @@ def getInfo(driver):
         time.sleep(2)
         getInfo(driver)
     except:
+        log.v("finish")
         driver.quit()
