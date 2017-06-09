@@ -28,7 +28,7 @@ def setParamData(data):
 
 
 def runTask():
-    filename = param.departCityCode + "-" + param.arriveCityCode + "-" + param.departDate + "-" + param.returnDate + "-"
+    filename = param.departCityCode + "-" + param.arriveCityCode + "-" + param.departDate + "-" + param.returnDate + "-" + str(int(time.mktime(datetime.datetime.now().timetuple())))
     csvUtil.filename = filename
     csvUtil.createReturnFile(filename)
     # try:
@@ -179,4 +179,13 @@ def getInfo(driver):
         csvUtil.writeReturnEntity(entity)
         log.v("article end")
 
-
+    log.v("page end")
+    try:
+        next = driver.find_element_by_class_name("day-list-pagination").find_element_by_class_name("next").find_element_by_css_selector("button")
+        log.v("found next button end")
+        next.click()
+        log.v("go to next page")
+        time.sleep(2)
+        getInfo(driver)
+    except:
+        driver.quit()
