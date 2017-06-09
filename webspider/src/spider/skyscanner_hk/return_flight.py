@@ -31,6 +31,8 @@ def runTask():
     filename = param.departCityCode + "-" + param.arriveCityCode + "-" + param.departDate + "-" + param.returnDate + "-" + str(int(time.mktime(datetime.datetime.now().timetuple())))
     csvUtil.filename = filename
     csvUtil.createReturnFile(filename)
+
+    log.v("csv fire created, now waiting for internet response")
     # try:
     #
     #     PROXY = "127.0.0.1:1080"
